@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import './Board.css';
-import { Trash} from 'react-feather';
+import { Trash, Search } from 'react-feather';
 import Card from './Card';
 
 const Board = (props) => {
   const [cards, setCards] = useState([]);
+  const [searchKey, setSearchKey] = useState('');
   const [showForm, setShowForm] = useState(false);
   const [cardData, setCardData] = useState({
     title: '',
@@ -20,13 +21,13 @@ const Board = (props) => {
     setShowForm(false);
   };
 
-  const deleteCard = index => {
+  const deleteCard = (index) => {
     const updatedCards = [...cards];
     updatedCards.splice(index, 1);
     setCards(updatedCards);
   };
 
-  const handleFormInputChange = e => {
+  const handleFormInputChange = (e) => {
     const { name, value } = e.target;
     setCardData(prevData => ({
       ...prevData,
@@ -43,15 +44,29 @@ const Board = (props) => {
     });
   };
 
+  const searchHandler = (e) => {
+    setSearchKey(e.target.value);
+  };
+
+  const searchCards = cards.filter(c => c.props.cardData.title.includes(searchKey));
+
+  const handleDeleteBoard = () => {
+    props.onDeleteBoard(); // Call the onDeleteBoard prop from the parent component
+  };
+
   return (
     <div className="board">
       <div className="board_top">
         <p className="board_top_title">{props.boardTitle}</p>
-        <Trash />
+        <Trash className="trash-icon" onClick={handleDeleteBoard} />
+      </div>
+      <div className="board-search">
+        <input type="text" placeholder={"Search in " + props.boardTitle} value={searchKey} onChange={searchHandler} />
+        <Search />
       </div>
 
       <div className="board_cards">
-        {cards}
+        {searchCards}
         <button className="add_card_button" onClick={() => setShowForm(true)}>
           Add New Post
         </button>

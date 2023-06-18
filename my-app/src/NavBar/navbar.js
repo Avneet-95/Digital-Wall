@@ -5,7 +5,7 @@ import Form from 'react-bootstrap/Form';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 
-function NavbarExample({ onCreateNewBoard }) {
+function NavbarExample({ onCreateNewBoard, onSearchHandler, searchKey }) {
     const handleCreateNewBoard = () => {
       onCreateNewBoard();
     };
@@ -13,7 +13,9 @@ function NavbarExample({ onCreateNewBoard }) {
   return (
     <Navbar expand="lg" className="bg-body-tertiary">
       <Container fluid>
-        <Navbar.Brand href="#">Toddle</Navbar.Brand>
+        <Navbar.Brand href="#">
+        Toddle
+        </Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
           <Nav
@@ -21,14 +23,15 @@ function NavbarExample({ onCreateNewBoard }) {
             style={{ maxHeight: '100px' }}
             navbarScroll
           >
-            {/* Add your other Nav.Link components here */}
           </Nav>
-          <Form className="d-flex">
+          <Form onSubmit={(e) => {e.preventDefault()}} className="d-flex">
             <Form.Control
               type="search"
               placeholder="Search"
               className="me-2"
               aria-label="Search"
+              value={searchKey}
+              onChange={onSearchHandler}
             />
             <Button variant="outline-success">Search</Button>
           </Form>
