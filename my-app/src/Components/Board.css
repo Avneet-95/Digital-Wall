@@ -1,0 +1,93 @@
+.board{
+    min-width: 20rem;
+    /* height: 100%;
+    max-height: 100%; */
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    height: 90vh;
+    overflow-y: scroll;
+}
+.board_top{
+    display: flex;
+}
+.board_top_title{
+    flex: 1;
+    display: flex;
+    align-items: center;
+    font-weight:  bold;
+}
+.board_top_title span{
+    color: gray;
+}
+.board_cards{
+    flex: 1;
+    height: 100%;
+    background-color: grey;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
+    border-bottom: 10px;
+    overflow-y: auto;
+}
+.board {
+    /* Your existing styles for the board */
+  
+    position: 20% 30% 20% 30%; /* Add position property to allow positioning of form popup */
+  
+    /* Add other styles as needed */
+  }
+  
+  .board_cards {
+    /* Your existing styles for the board cards */
+  
+    position: 30% 30% 30% 30%; 
+  }
+  
+  .add_card_button {
+    /* Your existing styles for the add card button */
+  
+    margin-bottom: 20px; /* Add margin to create space below the button */
+  }
+  
+  .card_form_popup {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    border: 1px solid #321313;
+    padding: 20px;
+    z-index: 10; /* Set a higher z-index to ensure the form popup is displayed above other elements */
+  }
+  .card_form {
+    
+    margin-bottom: 20px;
+  }
+  
+  .card_form h3 {
+    /* Styles for the form title */
+    margin-bottom: 10px;
+  }
+  
+  .card_form input {
+    /* Styles for the form inputs */
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .card_form button {
+    /* Styles for the form buttons */
+    gap: 4px;
+    padding: 8px 16px;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  .card_form form button:hover {
+    background-color: #45a049;
+  }
